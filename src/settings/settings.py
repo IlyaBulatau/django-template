@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+import socket
 from pathlib import Path
 from environs import Env
 from .enums import  ModeEnum
@@ -38,20 +39,29 @@ SECRET_KEY = ENV('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = ENV('DEBUG')
 
+# Set up debug toolbar
+if DEBUG:
+    hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
+    INTERNAL_IPS = [ip[: ip.rfind(".")] + ".1" for ip in ips] + ["127.0.0.1", "10.0.2.2"]
+
+
 ALLOWED_HOSTS = []
 
 
 # Application definition
+ROOT_APPS = ['apps.index']
+
+THIRD_PARTY_APPS = ['debug_toolbar']
 
 INSTALLED_APPS = [
-    "apps.index",
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    *ROOT_APPS,
+    *THIRD_PARTY_APPS,
 ]
 
 MIDDLEWARE = [
@@ -62,6 +72,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'settings.urls'

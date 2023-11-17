@@ -22,3 +22,6 @@ delete:
 rebuld:
 	make build
 	make run
+
+logs:
+	docker logs app -f
