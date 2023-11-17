@@ -17,7 +17,7 @@ stop:
 	docker stop $$(docker ps -a -q)
 
 delete:
-	docker delete $$(docker ps -a -q)
+	docker rm $$(docker ps -a -q)
 
 rebuld:
 	make build

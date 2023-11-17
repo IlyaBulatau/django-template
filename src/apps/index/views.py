@@ -1,16 +1,11 @@
-from django.shortcuts import render, get_object_or_404
 from django.views import generic
-
-from .models import Category
-
-# Create your views here.
-class IndexView(generic.ListView):
-    template_name = "index/index.html"
-    model = Category
-    context_object_name = "categories"
+from django.http import HttpResponse
+from django.shortcuts import render
 
 
-class DetailView(generic.DetailView):
-    template_name = "index/detail.html"
-    model = Category
-    context_object_name = "category"
+def healthcheck(request):
+
+    context = {'status': 'OK'}
+    return HttpResponse(
+        render(request=request, template_name="index/index.html", context=context)
+        )

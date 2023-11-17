@@ -1,7 +1,0 @@
-<h1>{{ category.id }}</h1>
-<h2>{{ category.name }}</h2>
-<ul>
-    {% for product in category.product_set.all %}
-    <li><a href="#">{{ product.title }}</a></li>
-    {% endfor %}
-</ul>
