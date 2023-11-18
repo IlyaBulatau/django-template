@@ -24,6 +24,7 @@ urlpatterns = [
     *admin_site,
 
     path('index/', include('apps.index.urls')),
+    path('users/', include('apps.users.urls')),
 
     path('__debug__/', include('debug_toolbar.urls'))
 ]

@@ -49,7 +49,10 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-ROOT_APPS = ['apps.index']
+ROOT_APPS = [
+    'apps.index',
+    'apps.users'
+    ]
 
 THIRD_PARTY_APPS = ['debug_toolbar']
 
