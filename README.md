@@ -1,5 +1,5 @@
 ```
-django-admin startproject --template=https://github.com/IlyaBulatau/django-template/archive/refs/heads/main.zip project_name
+django-admin startproject --template https://codeload.github.com/IlyaBulatau/django-template/zip/refs/heads/main settings
 ```
 
 ```
