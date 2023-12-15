@@ -6,6 +6,8 @@ django-admin startproject --template https://codeload.github.com/IlyaBulatau/dja
 mv env/.env.example env/.env.dev```
 
 ```
+
+```
 make run
 ```
 
